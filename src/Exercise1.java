@@ -13,7 +13,7 @@ public class Exercise1 {
         convertCharToUpper(given);
         removeWhiteSpace(given);
 
-        String string = "Toi \tyeu ha\t noi pho";
+        String string = "Toi \tyeu ha\t noi pho";               // adding this string to the given
         System.out.println(addString(given, string));
 
         removeWhiteSpace(addString(given, string));
