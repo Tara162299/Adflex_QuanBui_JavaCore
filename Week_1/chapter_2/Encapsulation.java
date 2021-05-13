@@ -1,4 +1,4 @@
-package Chapter_2;
+package chapter_2;
 public class Encapsulation implements Interface{
     // Implementing Interface => either abstract class or implement all abstract methods in interface, and must be public
     // One can have many constructor with different inputs

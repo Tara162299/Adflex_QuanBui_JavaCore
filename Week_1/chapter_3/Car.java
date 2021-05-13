@@ -1,4 +1,4 @@
-package Chapter_3;
+package chapter_3;
 public class Car {
     int price;
     String type;

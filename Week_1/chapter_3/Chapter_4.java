@@ -1,4 +1,4 @@
-package Chapter_3;
+package chapter_3;
 public class Chapter_4 {
     public static void main(String[] args) {
         Integer d = new Integer(5);

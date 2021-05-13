@@ -1,4 +1,4 @@
-package Chapter_2;
+package chapter_2;
 public class Main {
     public static void main(String[] args) {
         Encapsulation obj1 = new Encapsulation("Ducati", 650, true);
