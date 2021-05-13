@@ -1,3 +1,5 @@
+package Project1;
+
 import java.util.Scanner;
 
 public class Exercise1_Class_In_Class {

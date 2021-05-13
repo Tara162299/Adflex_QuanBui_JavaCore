@@ -1,3 +1,5 @@
+package Project1.Exercise2;
+
 import java.util.Scanner;
 
 public class Exercise1 {
