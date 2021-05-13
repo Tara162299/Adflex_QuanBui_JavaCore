@@ -2,7 +2,7 @@ package Project_1;
 
 import java.util.Scanner;
 
-public class Exercise1 {
+public class Exercise_1 {
     public static void main(String[] args) {
         // Given String:
         // Bai hat Em oi Ha Noi pho. Ta con em mui hoa sua. \n    Toi 	yeu ha	 noi pho \n    De im ngu ty 	con di  $ \n    Con sap ve 	chua? - Con chua ve   duoc, doi mo   mat!

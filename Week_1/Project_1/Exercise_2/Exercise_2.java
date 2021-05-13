@@ -1,4 +1,4 @@
-package Project_1.Exercise2;
+package Project_1.Exercise_2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Exercise2 {
+public class Exercise_2 {
     public static void main(String[] args) {
 
         System.out.print("Please enter the date in the format: yyyy/mm/dd: ");
