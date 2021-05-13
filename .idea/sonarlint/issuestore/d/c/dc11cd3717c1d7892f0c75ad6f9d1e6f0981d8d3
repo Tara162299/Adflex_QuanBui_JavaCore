@@ -1,0 +1,44 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(µöï•øÿÿÿÿ
+h
+java:S3776
+"RRefactor this method to reduce its Cognitive Complexity from 75 to the 15 allowed.(Çµí‘
+E
+java:S6212"/Declare this local variable with "var" instead.(ÅÒ²º
+E
+java:S6212"/Declare this local variable with "var" instead.(ÃÑøĞ
+J
+java:S6212"/Declare this local variable with "var" instead.(ÒãÎ şÿÿÿÿ
+E
+java:S6212"/Declare this local variable with "var" instead.(‘üÛæ
+J
+java:S6212%"/Declare this local variable with "var" instead.(ŒÚ„üÿÿÿÿ
+E
+java:S6212&"/Declare this local variable with "var" instead.(Û‹ùÊ
+E
+java:S6212("/Declare this local variable with "var" instead.(­€ ¼
+J
+java:S6212*"/Declare this local variable with "var" instead.(¾Ú…üÿÿÿÿ
+D
+java:S6212,"/Declare this local variable with "var" instead.(‰´¢
+J
+java:S6212-"/Declare this local variable with "var" instead.(€–±äÿÿÿÿÿ
+J
+java:S6212<"/Declare this local variable with "var" instead.(ËÄÜùıÿÿÿÿ
+A
+java:S1075<"&Remove this hard-coded path-delimiter.(ËÄÜùıÿÿÿÿ
+J
+java:S6212="/Declare this local variable with "var" instead.(€–±äÿÿÿÿÿ
+Q	java:S125J"<This block of commented-out lines of code should be removed.(†€éˆ
+E
+java:S6212M"/Declare this local variable with "var" instead.(õµñ©
+J
+java:S6212N"/Declare this local variable with "var" instead.(ä¬Õ®üÿÿÿÿ
+J
+java:S6212O"/Declare this local variable with "var" instead.(­¢óıÿÿÿÿ
+D
+java:S6212_"/Declare this local variable with "var" instead.(–Îj
+J
+java:S6212`"/Declare this local variable with "var" instead.(ä¬Õ®üÿÿÿÿ
+J
+java:S6212a"/Declare this local variable with "var" instead.(µ¼½ıÿÿÿÿ

@@ -107,8 +107,6 @@ w
 GWeek_1/Exercise2/Exercise2_Input/Input_20151108/cdr_20151108_9x56_1.txt,4/3/43f97d5a0eeae9a6e17f2e334947d59d03494c0f
 x
 HWeek_1/Exercise2/Exercise2_Input/Input_20151108/cdr_20151108_10x56_1.txt,0/7/070ccb32f4f943eebbe42138f8bbf13603132806
-E
-Week_1/Exercise1.java,2/7/27672faf7e260553c6063a2c24a566fd1973376c
 O
 Week_1/Exercise2/Exercise2.java,d/c/dc11cd3717c1d7892f0c75ad6f9d1e6f0981d8d3
 :
