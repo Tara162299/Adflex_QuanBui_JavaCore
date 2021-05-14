@@ -1,16 +1,15 @@
 package chapter_3;
+
 public class Wrapper {
     public static void main(String[] args) {
-        // local variables are on stack
-        // instance variables and objects are on heap
+
         Integer a = new Integer(5);
         int b = 5;
 
-        // a is an object, while b is just an instance variable
+        // method: instance of to indicate if a is an object
         if (a instanceof Object) {
             System.out.println("Yes");
-        }
-        else{
+        } else {
             System.out.println("No");
         }
 
@@ -22,10 +21,33 @@ public class Wrapper {
         System.out.println(d);
 
         System.out.println("Y" + "O");
-        // converted to int because of +
-        System.out.println('L' + 'O');
+        System.out.println('L' + 'O');      // converted to int because of '+'
 
 
+        // Conditional Operator:
+        int conditionalOperator = (a == 5) ? 4 : 3;
+        System.out.println(conditionalOperator);
+
+        // Boxing
+        Integer number = new Integer(5);    // create an Integer object
+        number++;                                 // unwrap, increment, re-wrap
+
+        int i = 5;
+        AddBoxing NEW = new AddBoxing();
+        NEW.go(i);
+    }
+
+    // Overloading
+    static class AddBoxing {
+        void go(Integer x) {
+            System.out.println("Integer");
+        }
+
+        void go(long x) {
+            System.out.println("long");
+        }
+
+        // which go() will be invoked?
 
     }
 }
