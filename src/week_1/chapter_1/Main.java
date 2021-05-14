@@ -1,4 +1,4 @@
-package chapter_1;
+package week_1.chapter_1;
 public class Main {
     // enum
         enum Type {DUCATI, BMW}

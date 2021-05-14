@@ -1,4 +1,4 @@
-package chapter_3;
+package week_1.chapter_3;
 public class Array {
 
     public static void main(String[] args) {

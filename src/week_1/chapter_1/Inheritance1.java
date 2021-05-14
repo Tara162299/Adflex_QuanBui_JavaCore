@@ -1,4 +1,4 @@
-package chapter_1;
+package week_1.chapter_1;
 public class Inheritance1 extends AbstractClass {
     // When a class extends an abstract class, all of the abstract methods must be implemented
     private String type;

@@ -1,4 +1,4 @@
-package chapter_2;
+package week_1.chapter_2;
 public class DownCasting extends Encapsulation implements Interface{
     String type;
     int price;
