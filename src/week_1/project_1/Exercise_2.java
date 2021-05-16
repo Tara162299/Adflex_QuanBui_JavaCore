@@ -1,4 +1,4 @@
-package week_1.project_1.Exercise_2;
+package week_1.project_1;
 
 import java.io.File;
 import java.io.FileNotFoundException;

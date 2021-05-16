@@ -1,7 +1,4 @@
 
-:
-
-Week_1.iml,e/9/e91122b5bb37480f0c69609de83c637c3c6c476d
 S
 #Week_1/Chapter_1/AbstractClass.java,7/d/7dd105870a3a066317bb0e27f8c7af3e1c32e307
 R
