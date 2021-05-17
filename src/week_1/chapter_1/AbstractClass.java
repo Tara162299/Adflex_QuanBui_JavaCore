@@ -1,4 +1,5 @@
 package week_1.chapter_1;
+
 public abstract class AbstractClass {
 
     // The first concrete subclass of an abstract class must implement all abstract
@@ -9,7 +10,9 @@ public abstract class AbstractClass {
     public String display() {
         return type;
     }
+
     public abstract void isFast();
+
     public abstract void isExpensive();
 
 }

@@ -1,5 +1,5 @@
 package week_1.chapter_1;
-public class Main {
+public class StartApp {
     // enum
         enum Type {DUCATI, BMW}
         Type type;
@@ -7,10 +7,10 @@ public class Main {
 
     public static void main(String[] args) {
         //ENUM
-        Main type3  = new Main();
+        StartApp type3  = new StartApp();
         type3.type = Type.DUCATI;
 
-        Main type4 = new Main();
+        StartApp type4 = new StartApp();
         type4.type = Type.BMW;
 
         Inheritance1 type1 = new Inheritance1("Ducati");

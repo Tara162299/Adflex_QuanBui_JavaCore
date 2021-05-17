@@ -44,6 +44,49 @@ public class FlowControl_Exceptions_Assertions {
 
         System.out.println();
 
+        // Assertion: an error and usually dont try and catch the error
+        // assert expression;
+        // assert expression1 : expression2; //expression 2 has to return a value
+        int value = 25;
+        assert (value <= 20) : "Not valid";
+        System.out.println("value is " + value);
+
+        System.out.println();
+
+        // while loop
+        int count1 = 1;
+        while (count1-- > 0) {
+            System.out.println("This is the while-do loop");
+        }
+
+        System.out.println();
+
+        // do-while loop
+        int count2 = 1;
+        do {
+            System.out.println("This is the do-while loop");
+        }
+        while (count2-- > 0);
+
+        System.out.println();
+
+        // for loop
+        //int i = 0;
+        for (int i = 0; i < 1;) {
+            i++;
+            System.out.println("This is a legal for-loop");
+        }
+
+        System.out.println();
+
+        //enhanced for loop
+        int[] array  = {1, 2};
+        for (int a : array) {
+            System.out.println("This is an enhanced for-loop");
+            break;
+        }
+
+        System.out.println();
 
         // handling exceptions using try-catch statement:
         try {
@@ -62,17 +105,8 @@ public class FlowControl_Exceptions_Assertions {
 
         System.out.println();
 
-        // Assertion: an error and usually dont try and catch the error
-        // assert expression;
-        // assert expression1 : expression2; //expression 2 has to return a value
-        
-        int value = 15;
-        assert value >= 20 : " Underweight";
-        System.out.println("value is " + value);
 
-        System.out.println();
-
-        //Testing handling exceptions using throw
+        //Testing handling multiple exceptions using throw
         Test testExpThrow = new Test();
         testExpThrow.throwExp();
     }
@@ -84,7 +118,7 @@ public class FlowControl_Exceptions_Assertions {
             try {
                 Integer f = Integer.valueOf(null);
             } catch (NullPointerException|NumberFormatException exp3) {
-                System.out.println("The integer is null");
+                System.out.println("The integer is null - using throw");
                 //throw exp3;
             } finally {
                 System.out.println("The finally statement will always be executed!");
