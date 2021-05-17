@@ -28,8 +28,10 @@ public class FlowControl_Exceptions_Assertions {
         System.out.println("");
 
         // labled statement:
-        outer: for (int i = 0; i < 10; i++) {
-            inner: for (int j = 10; j > 0; j--) {
+        outer:
+        for (int i = 0; i < 10; i++) {
+            inner:
+            for (int j = 10; j > 0; j--) {
                 if (i == j) {
                     System.out.println(j);
                     break outer;

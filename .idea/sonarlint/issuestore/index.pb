@@ -7,8 +7,6 @@ U
 %src/week_1/chapter_2/DownCasting.java,7/b/7bc4254ccd213e549b64358b94d78d1fd7170370
 W
 'src/week_1/chapter_2/Encapsulation.java,6/4/647b544cb5e6ca3d0ebf352a318810d8332db1a5
-T
-$src/week_1/project_1/Exercise_1.java,e/1/e13ef52138927c80e3ef3f5cdf0e951fe7eef39c
 V
 &src/week_1/chapter_1/Inheritance1.java,1/c/1c43d6576022b2174ee65d4d7a629ea560728aeb
 V
@@ -24,8 +22,6 @@ S
 :
 
 Week_1.iml,e/9/e91122b5bb37480f0c69609de83c637c3c6c476d
-Q
-!src/week_1/chapter_3/Wrapper.java,0/5/05e9f0d36dadc94342d06485b3c2f0b6139523a2
 {
 KResource/Project1_Exercise2/Output/Output_20151107/3333_20151106_8x56_1.txt,1/e/1e6d8f635f7dfab75cc972ef7642a46b6cc504b1
 {
@@ -110,8 +106,6 @@ x
 HResource/Project1_Exercise2/Input/Input_20151108/cdr_20151108_9x56_1.txt,d/d/ddbd0c2e5c4e9c9d8dcfcdf1c05e11ebb83e863b
 y
 IResource/Project1_Exercise2/Input/Input_20151108/cdr_20151108_10x56_1.txt,b/f/bfecbb378564e54659d749df8b83a86df5c337bc
-T
-$src/week_1/project_1/Exercise_2.java,7/8/7873c8ab3f86fc2e5194851f6d2a7d2fec9dac38
 x
 HResource/Project1_Exercise2/Input/Input_20151106/cdr_20151106_8x56_1.txt,4/6/46e2ff37f6287a1cfd1baa8876833ba4a5935ecf
 x

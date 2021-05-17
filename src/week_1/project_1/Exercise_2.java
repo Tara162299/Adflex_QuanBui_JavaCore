@@ -41,8 +41,8 @@ public class Exercise_2 {
 
             for (int x = 1; x < 8; x++) {
                 try {
-                    File myObj = new File("/Users/martinbui/Desktop/input/" + date + "/cdr_" + date + s + x + ".txt");
-                    Scanner myReader = new Scanner(myObj);
+                    File myFile = new File("/Users/martinbui/Desktop/input/" + date + "/cdr_" + date + s + x + ".txt");
+                    Scanner myReader = new Scanner(myFile);
                     while (myReader.hasNextLine()) {
                         String data = myReader.nextLine();
                         boolean isPhoneValid = data.length() == 10 && data.charAt(0) == '8' && data.charAt(1) == '4' && data.charAt(2) == '9';
@@ -57,8 +57,8 @@ public class Exercise_2 {
                 }
 
                 try {
-                    File myObj = new File("/Users/martinbui/Desktop/output/" + date + "/" + date + s + x + ".txt");
-                    Scanner myReader = new Scanner(myObj);
+                    File myFile = new File("/Users/martinbui/Desktop/output/" + date + "/" + date + s + x + ".txt");
+                    Scanner myReader = new Scanner(myFile);
                     while (myReader.hasNextLine()) {
                         String data = myReader.nextLine();
                         if (data.length() == 10 && data.charAt(0) == '8' && data.charAt(1) == '4' && data.charAt(2) == '9') {
@@ -71,7 +71,6 @@ public class Exercise_2 {
                     System.out.println("There is no such output file as " + date + s + x + ".txt!");
                     System.out.println("_________________________________________________________________________________");
                     continue;
-                    //e.printStackTrace();
                 }
 
                 for (int a = 0; a < count1; a++) {
