@@ -1,32 +1,35 @@
+package week_2.chapter_6;
+
 import java.io.*;
 
 public class objectGraph {
 
     public static void main(String[] args) {
-        //is used to determine which objects are reachable and which not,
-        // so that all unreachable objects could be made eligible for garbage collection
+        //determine which objects are reachable and which not,
+        //all unreachable objects could be made eligible for garbage collection
 
-        Dog f = new Dog(35, "Fido");
-        System.out.println("before: " + f.name + " "
-                + f.weight);
+        Dog dog = new Dog(35, "Fido");
+        System.out.println("before: " + dog.name + " "
+                + dog.weight);
+
         try {
-            FileOutputStream fs = new FileOutputStream("testSer.ser");
-            ObjectOutputStream os = new ObjectOutputStream(fs);
-            os.writeObject(f);
-            os.close();
+            FileOutputStream fos = new FileOutputStream("testSer1.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(dog);
+            oos.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            FileInputStream fis = new FileInputStream("testSer.ser");
+            FileInputStream fis = new FileInputStream("testSer1.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            f = (Dog) ois.readObject();
+            dog = (Dog) ois.readObject();
             ois.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("after:  " + f.name + " "
-                + f.weight);
+        System.out.println("after:  " + dog.name + " "
+                + dog.weight);
     }
 }
 
@@ -34,17 +37,17 @@ class Dog extends Animal implements Serializable {
     String name;
     //int weight;
 
-    Dog(int w, String n) {
-        weight = w;                 // inherited
-        this.name = n;              // not inherited
+    Dog(int w, String name) {
+        this.weight = w;                    // inherited from class Animal
+        this.name = name;                   // not inherited from class Animal
     }
 }
 
-class Animal {                      // not serializable !
+class Animal {                               // not serializable!
     int weight = 42;
     String name = "Kit";
 }
 
-// The key here is that because Animal is not serializable,
-// when the Dog was deserialized, the Animal constructor ran and reset the Dog initial weight variable.
-// The name in animal class was not inherited and not serializable => the original name was kept as it declared in Dog class
+//Animal is not serializable,
+// so when the Dog was deserialized, the Animal constructor ran and reset the Dog initial weight variable.
+// The string "name" was declared in dog class so it keep the value before serialization

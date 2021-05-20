@@ -1,3 +1,4 @@
+package week_2.chapter_6;
 public class Formatting {
     public static void main(String[] args) {
         int i1 = -123;

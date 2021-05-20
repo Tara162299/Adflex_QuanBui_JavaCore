@@ -1,3 +1,4 @@
+package week_2.chapter_6;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,7 +10,7 @@ public class Parsing_Tokenizing_Formatting {
             System.out.print(matcher.start() + " ");
         }
 
-        System.out.println("");
+        System.out.println();
 
         Pattern p = Pattern.compile(".*x.x");
         Matcher m = p.matcher(" yyxxxyxx");

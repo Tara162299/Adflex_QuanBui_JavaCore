@@ -1,3 +1,4 @@
+package week_2.chapter_6;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -17,16 +18,20 @@ public class Date extends java.util.Date {
         // Calendar class
         System.out.print("\n");
         Date d1 = new Date();
-        Calendar c = Calendar.getInstance();                // important!!!
-        c.setTime(d1);                          // #1
-        if (Calendar.SUNDAY == c.getFirstDayOfWeek()) {        // #2
+        Calendar c = Calendar.getInstance();
+        c.setTime(d1);
+        if (Calendar.SUNDAY == c.getFirstDayOfWeek()) {         //boolean
             System.out.println("Monday is the first day of the week");
         } else {
-            System.out.println("trillionth milli day of week is " + c.get(Calendar.DAY_OF_WEEK));
+            System.out.println("Trillionth milli day of week is " + c.get(Calendar.DAY_OF_WEEK)); //find out the day of the week that the trillionth millisecond falls on.
+
         }
-        c.add(Calendar.MONTH, 1);
-        java.util.Date d2 = c.getTime();                    // #3 Convert c's value back to an instance of Date.
-        System.out.println("new date " + d2.toString());
+
+
+        c.add(Calendar.MONTH, 1);                   // add a month in the current date in object c
+        java.util.Date d2 = c.getTime();                   // Convert object c's value back to an instance of Date.
+        System.out.println("Before adding, the date is: " + d1.toString());
+        System.out.println("After adding, the date is:  " + d2.toString());
 
 
         // The DateFormat Class
@@ -43,7 +48,7 @@ public class Date extends java.util.Date {
             System.out.println(df.format(d3));
         }
 
-        // The numberformat class:
+        // The number format class:
         System.out.print("\n");
         float f1 = 123.4567f;
         Locale locFR = new Locale("fr");          // France
