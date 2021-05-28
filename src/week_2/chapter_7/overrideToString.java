@@ -3,30 +3,22 @@ package week_2.chapter_7;
 public class overrideToString {
     public static void main(String[] args) {
 
-        Vehicle Ducati = new Vehicle("Ducati", 550);
-        System.out.println(Ducati.toString());
+        Override test = new Override(22, "Puppy");
+
+        test.toString();
     }
 }
 
-class Vehicle {
+class Override {
+    int age;
     String name;
-    int price;
 
-    public Vehicle(String name, int price) {
+    public Override(int age, String name) {
         this.name = name;
-        this.price = price;
+        this.age = age;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    @Override
     public String toString() {
-        return ("The toString() has been successfully override " + name + " " + price);
+        return "My girlfriend nickname is: " + name + " and she is: " + age;
     }
 }
