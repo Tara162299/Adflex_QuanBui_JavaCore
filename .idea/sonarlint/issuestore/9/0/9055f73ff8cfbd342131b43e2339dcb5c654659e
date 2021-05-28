@@ -1,0 +1,14 @@
+
+k
+java:S2095"PUse try-with-resources or close this "ObjectOutputStream" in a "finally" clause.(¥€ë˜øÿÿÿÿ
+j
+java:S2095"OUse try-with-resources or close this "ObjectInputStream" in a "finally" clause.(ÑÒ»¥øÿÿÿÿ
+c
+java:S2095"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(Íæ¡û
+d
+java:S2095"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(³òÔ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÊÂÄäüÿÿÿÿ
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‘¨è8Ğˆ°Ö—/
+G
+java:S2387%"*"name" is the name of a field in "Animal".(Ê§…ñ8¦¾ÎÅ˜/
+W	java:S125&"<This block of commented-out lines of code should be removed.(÷âã^8§¾ÎÅ˜/

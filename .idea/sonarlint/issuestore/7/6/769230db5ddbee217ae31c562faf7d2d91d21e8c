@@ -1,0 +1,6 @@
+
+^
+java:S2095("HUse try-with-resources or close this "FileReader" in a "finally" clause.(ח‏שע
+c
+java:S2095#"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(עט¬מûÿÿÿÿ
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‘¨ט

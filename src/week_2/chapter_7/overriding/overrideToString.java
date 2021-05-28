@@ -1,4 +1,4 @@
-package week_2.chapter_7;
+package week_2.chapter_7.overriding;
 
 public class overrideToString {
     public static void main(String[] args) {
