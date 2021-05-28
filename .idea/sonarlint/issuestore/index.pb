@@ -1,6 +1,4 @@
 
-O
-src/week_1/chapter_3/Array.java,2/6/26999b782001249c43bb8042747eb8e0463b060b
 U
 %src/week_1/chapter_2/DownCasting.java,7/b/7bc4254ccd213e549b64358b94d78d1fd7170370
 V
@@ -118,8 +116,6 @@ x
 HResource/Project1_Exercise2/Input/Input_20151107/cdr_20151107_8x56_1.txt,6/0/604b12122478e788252bc3caf8e50700b040e8c6
 b
 2src/week_1/project_1/Exercise1_Class_In_Class.java,0/a/0afed1bca5c3c11891598961e907d2e31eea5d5e
-Q
-!src/week_1/chapter_3/Wrapper.java,0/5/05e9f0d36dadc94342d06485b3c2f0b6139523a2
 T
 $src/week_1/project_1/Exercise_1.java,e/1/e13ef52138927c80e3ef3f5cdf0e951fe7eef39c
 T
@@ -128,15 +124,33 @@ W
 'src/week_1/chapter_2/Encapsulation.java,6/4/647b544cb5e6ca3d0ebf352a318810d8332db1a5
 S
 #src/week_1/chapter_2/Interface.java,4/7/47a5cbbb0acd946d686da23d09ef8d1c0080d1c9
-U
-%src/week_2/chapter_5/MyException.java,3/f/3f580b19743481314a33f98370978d9a8fbfb01e
 N
 src/week_1/chapter_2/Main.java,7/c/7c957baf7ae22cab33f4c44f117f4001bbd7d1d1
 W
 'src/week_1/chapter_1/AbstractClass.java,c/a/ca60239d4e89ed29fe2250bc7ec3c0a0b6637f89
 R
 "src/week_1/chapter_1/StartApp.java,1/1/11a43268b178ba697b476e1564f9aeeed57bb8ba
+a
+1src/week_2/chapter_6/Tokenizing_String/split.java,6/2/62c041f9bbc3eb9349fa77d64952c6b3a02c9870
+;
+testSer.txt,3/8/384efff9f20e2278415baa40d8c78b6012624c2d
+N
+src/week_2/chapter_6/Date.java,e/c/ec6f7640622c4dfc0a5fc2cb5dd669324deaf698
+T
+$src/week_2/chapter_6/Formatting.java,b/d/bdd3daf005c4a76cc380654e6ffca21202562917
+U
+%src/week_2/chapter_6/objectGraph.java,9/0/9055f73ff8cfbd342131b43e2339dcb5c654659e
+\
+,.idea/inspectionProfiles/Project_Default.xml,4/9/496a238a6afa168dbaf6efd37bb459331589579c
+W
+'src/week_2/chapter_6/Serialization.java,8/7/87d01d7ab96be9da2e0f0b5afa3b6fcb8b5e0451
 k
-;src/week_2/chapter_5/FlowControl_Exceptions_Assertions.java,7/c/7cb16c17dd73624f2f6c23c3f43c11f6c72eff72
+;src/week_2/chapter_6/String_StringBuilder_StringBuffer.java,5/c/5c49e0ac11e8b656510b2e1b0b8a77b0224417db
+g
+7src/week_2/chapter_6/Parsing_Tokenizing_Formatting.java,4/8/488bf415a3acee7799085e15e3fbb0d853ce8326
 Z
-*src/week_2/chapter_5/BadFoodException.java,e/d/ed87d32d8954a9b052786789a7cc2fa8b0011812
+*src/week_2/chapter_6/FileNavigationIO.java,7/6/769230db5ddbee217ae31c562faf7d2d91d21e8c
+Q
+!src/week_1/chapter_3/Wrapper.java,0/5/05e9f0d36dadc94342d06485b3c2f0b6139523a2
+O
+src/week_1/chapter_3/Array.java,2/6/26999b782001249c43bb8042747eb8e0463b060b

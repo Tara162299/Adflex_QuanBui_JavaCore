@@ -37,7 +37,7 @@ public class FlowControl_Exceptions_Assertions {
                     break outer;
                 }else{
                     System.out.println(i);
-                    continue inner;
+                    continue;
                 }
             }
         }
