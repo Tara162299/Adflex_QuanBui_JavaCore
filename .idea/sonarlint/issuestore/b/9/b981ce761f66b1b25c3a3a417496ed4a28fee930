@@ -1,0 +1,16 @@
+
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÌöŒ¼üÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(áº©å
+S
+java:S1854
+"8Remove this useless assignment to local variable "five".(—Ý×µøÿÿÿÿ
+<
+java:S2129	"!Remove this "Integer" constructor(˜˜ ãúÿÿÿÿ
+J
+java:S1874	"/Remove this use of "Integer"; it is deprecated.(˜˜ ãúÿÿÿÿ
+q
+java:S2159!"VRemove this call to "equals"; comparisons between unrelated types always return false.(“Íííûÿÿÿÿ
+k
+java:S12066"PThis class overrides "equals()" and should therefore also override "hashCode()".(Ý¢êÍýÿÿÿÿ
+W
+java:S11267"AReplace this if-then-else statement by a single return statement.(Ò·Ýð

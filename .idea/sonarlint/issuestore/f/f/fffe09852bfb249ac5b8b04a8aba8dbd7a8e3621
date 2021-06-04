@@ -1,0 +1,14 @@
+
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(”Ğïß
+g	java:S101#"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÉÆ¶ûÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(áº©å
+\
+java:S22592"?A "NullPointerException" could be thrown; "o" is nullable here.(€Ã‹ò8º•‚‘›/
+h
+java:S1104$"MMake x a static final constant or non-public and provide accessors if needed.(±Šõ¶ûÿÿÿÿ
+O
+java:S1854"9Remove this useless assignment to local variable "three".(°Ö±ã
+k
+java:S12061"PThis class overrides "equals()" and should therefore also override "hashCode()".(İ¢êÍıÿÿÿÿ
+W
+java:S11262"AReplace this if-then-else statement by a single return statement.(€Ã‹ò
