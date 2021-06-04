@@ -7,12 +7,13 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Method {
-    File file = new File("File");
+    File file;
 
     public Method(File file) {
         this.file = file;
@@ -49,7 +50,7 @@ class Method {
 
     ArrayList<ArrayList<String>> Header = new ArrayList<>();
 
-    // store all the desired characters in each line in an arraylist (using for struct header)
+    // arraylist to store all syntax in each line (using for struct header)
     public ArrayList returnStructHeader(int startIndex, ArrayList<String> struct, int numChar) {
         for (int j = 0; j < struct.size() - 1; j++) {             // tai sao phai -1 o day
             Header.add(getChar(startIndex, struct.get(j), numChar));
@@ -57,9 +58,9 @@ class Method {
         return Header;
     }
 
-    ArrayList<String> checkFutureDateArray = new ArrayList<>();
+    ArrayList<String> checkFutureDate = new ArrayList<>();
 
-    // return an arraylist of all valid date (checking for future dates)
+    // return a string arraylist of all valid date (checking for future dates)
     public ArrayList<String> checkFutureDate(ArrayList<String> message) {
         String string;
         Date date = new Date();
@@ -85,17 +86,16 @@ class Method {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                checkFutureDateArray.add(stringDate);
+                checkFutureDate.add(stringDate);
             }
         }
-
-        return checkFutureDateArray;
+        return checkFutureDate;
     }
 
     ArrayList<ArrayList<String>> Bottom = new ArrayList<>();
 
-    // search for bottom struct in each message string
-    public ArrayList getStructinMessage(ArrayList<String> message, int numChar) {
+    // search for bottom syntax in each message string
+    public ArrayList getSyntaxinMessage(ArrayList<String> message, int numChar) {
         // array list to store a single header
         for (int j = 0; j < message.size(); j++) {             // tai sao phai -1 o day
             int startIndex = message.get(j).length() - numChar;
@@ -104,26 +104,61 @@ class Method {
         return Bottom;
     }
 
-    public boolean checkStructinMessage(int index) {
-        boolean statement = false;
+    ArrayList<ArrayList<String>> DiffBottom = new ArrayList<>();
 
-        for (Object check : Header) {
-            if (Bottom.get(index).equals(check)) {
-                statement = true;
+    // return arraylist of different syntax in message
+    public ArrayList getDiffSyntaxMessage() {
+        for (int i = 0; i < Bottom.size(); i++) {
+            for (int j = 0; j < DiffBottom.size(); j++) {
+                if (!Bottom.get(i).equals(DiffBottom.get(j))) {
+                    DiffBottom.add(Bottom.get(i));
+                }
             }
         }
-        return statement;
+        return DiffBottom;
     }
 
+    ArrayList<Date> dateArrayList = new ArrayList<>();
+
     //from the validate dateArray above, check the struct bottom and time to see if it is at least 1 month away
-    public void checkDateFinal(int numChar, ArrayList<String> message, ArrayList getStructinMessage) {
+    public void checkDateFinal() {
+        // count appearance of each syntax in message
+        int[] countSyntax = new int[DiffBottom.size()];
+        for (int i = 0; i < countSyntax.length; i++) {
+            countSyntax[i] = 0;
+        }
 
+        // mapping the date and the syntax of each line in the message string
+        HashMap<String, ArrayList<String>> mapDateandSyntax = new HashMap<>();
+        for (int i = 0; i < checkFutureDate.size(); i++) {
+            mapDateandSyntax.put(checkFutureDate.get(i), Bottom.get(i));
+        }
 
-        for (int i = 0; i < checkFutureDateArray.size(); i++) {
-            if (!checkFutureDateArray.get(i).equals("Invalid date") && checkStructinMessage(i) == true) {
-
+        // count appearance of each syntax in the message
+        for (int i = 0; i < checkFutureDate.size(); i++) {
+            if (!checkFutureDate.get(i).equals("Invalid date")) {
+                countSyntax[i]++;
             }
         }
+
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+        for (Map.Entry<String, ArrayList<String>> temp : mapDateandSyntax.entrySet()) {
+            if (!temp.getKey().equals("Invalid date")) {
+                Date date;
+                try {
+                    date = df.parse(temp.getKey());
+                    dateArrayList.add(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+//            if (!checkFutureDateArray.get(i).equals("Invalid date") && checkStructinMessage(i) == true) {
+//                mapDateandSyntax.getKey();
+//            }
+
 
     }
 
@@ -168,35 +203,4 @@ class Method {
         }
         //    return dateArrayList;
     }
-
-
 }
-
-
-//    public static void returnPhone(ArrayList<String> message) {
-//        int countChar = 0;
-//        ArrayList<String> phoneNumber = new ArrayList<>();
-//        ArrayList<ArrayList<String>> phoneArray = new ArrayList<>();
-//
-//        for (int i = 0; i < message.size(); i++) {
-//            String string = message.get(i);
-//            for (int j = 1; j <= 12; j++) {
-//                if (Character.isDigit(string.charAt(j))) {
-//                    phoneNumber.add(String.valueOf(string.charAt(j)));
-//                    countChar++;
-//                }
-//            }
-//
-//        }
-//    }
-//
-//    public static void checkValidPhone(ArrayList<String> message) {
-//        ArrayList<String> phoneArray = new ArrayList<>();
-//        String phoneRegex = "^\\+(?:[0-9] ?){11}[0-9]$";
-//
-//        if (Pattern.compile(phoneRegex).matcher("+84 0234768746").matches()) {
-//            System.out.println("yes");
-//        } else {
-//            System.out.println("no");
-//        }
-//    }

@@ -2,6 +2,7 @@ package week_2.project_2.collection1;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Runner {
@@ -23,11 +24,17 @@ public class Runner {
         // extract all the date of the String message to an arraylist (checked for future date)
         ArrayList<String> dateArray = message.checkFutureDate(toStringMessage);
 
-        ArrayList<String> HeaderMessageArray = message.getStructinMessage(toStringMessage, 4);
+        // choosing numChar base on the syntax that has the most character.
+        ArrayList<String> SyntaxMessageArray = message.getSyntaxinMessage(toStringMessage, 5);
+        ArrayList<String> SyntaxMessageArray_Test = message.getDiffSyntaxMessage();
 
-        //System.out.println(HeaderStructArray);
-        System.out.println(HeaderMessageArray);
-       // checkValidDate(toStringMessage, dateArray, HeaderArray);
+
+
+
+        System.out.println(dateArray);
+        System.out.println(SyntaxMessageArray);
+        System.out.println(SyntaxMessageArray_Test);
+        // checkValidDate(toStringMessage, dateArray, HeaderArray);
 
 
 
