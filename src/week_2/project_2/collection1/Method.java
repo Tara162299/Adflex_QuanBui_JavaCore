@@ -1,4 +1,4 @@
-package week_2.project_2;
+package week_2.project_2.collection1;
 
 import java.io.*;
 import java.text.DateFormat;
@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,21 +47,20 @@ class Method {
         return charArray;
     }
 
+    ArrayList<ArrayList<String>> Header = new ArrayList<>();
+
     // store all the desired characters in each line in an arraylist (using for struct header)
     public ArrayList returnStructHeader(int startIndex, ArrayList<String> struct, int numChar) {
-        // array list to store a single header
-        ArrayList<ArrayList<String>> Header = new ArrayList<>();
-
         for (int j = 0; j < struct.size() - 1; j++) {             // tai sao phai -1 o day
             Header.add(getChar(startIndex, struct.get(j), numChar));
         }
         return Header;
     }
 
+    ArrayList<String> checkFutureDateArray = new ArrayList<>();
 
     // return an arraylist of all valid date (checking for future dates)
     public ArrayList<String> checkFutureDate(ArrayList<String> message) {
-        ArrayList<String> dateArray = new ArrayList<>();
         String string;
         Date date = new Date();
 
@@ -85,20 +85,18 @@ class Method {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                dateArray.add(stringDate);
+                checkFutureDateArray.add(stringDate);
             }
         }
 
-        return dateArray;
+        return checkFutureDateArray;
     }
 
+    ArrayList<ArrayList<String>> Bottom = new ArrayList<>();
 
     // search for bottom struct in each message string
     public ArrayList getStructinMessage(ArrayList<String> message, int numChar) {
         // array list to store a single header
-
-        ArrayList<ArrayList<String>> Bottom = new ArrayList<>();
-
         for (int j = 0; j < message.size(); j++) {             // tai sao phai -1 o day
             int startIndex = message.get(j).length() - numChar;
             Bottom.add(getChar(startIndex, message.get(j), numChar));
@@ -106,8 +104,26 @@ class Method {
         return Bottom;
     }
 
+    public boolean checkStructinMessage(int index) {
+        boolean statement = false;
+
+        for (Object check : Header) {
+            if (Bottom.get(index).equals(check)) {
+                statement = true;
+            }
+        }
+        return statement;
+    }
+
     //from the validate dateArray above, check the struct bottom and time to see if it is at least 1 month away
-    public void checkDateFinal(ArrayList<String> message, ArrayList<String> checkFutureDate, ArrayList returnStructHeader, ArrayList getStructinMessage) {
+    public void checkDateFinal(int numChar, ArrayList<String> message, ArrayList getStructinMessage) {
+
+
+        for (int i = 0; i < checkFutureDateArray.size(); i++) {
+            if (!checkFutureDateArray.get(i).equals("Invalid date") && checkStructinMessage(i) == true) {
+
+            }
+        }
 
     }
 
