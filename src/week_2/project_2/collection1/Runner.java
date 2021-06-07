@@ -1,9 +1,11 @@
 package week_2.project_2.collection1;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-
+import java.util.*;
+// nen khai bao interface, dung list thay vi arraylist
+// nguyen tac solid
+// output must be specific
+// always khai bao modifier
 
 public class Runner {
     public static void main(String[] args) {
@@ -14,32 +16,41 @@ public class Runner {
         Method message = new Method(messageInput);
         Method struct = new Method(structInput);
 
-        ArrayList<String> toStringStruct = struct.changeToString();
+        List<String> toStringStruct = struct.changeToString();
         // extract all the syntax of the String struct to an arraylist
-        ArrayList<String> HeaderStructArray = struct.returnStructHeader(1, toStringStruct, 4);
+        List<List<String>> HeaderStructArray = struct.returnStructHeader(1, toStringStruct, 4);
 
 
         // change message file input to String
-        ArrayList<String> toStringMessage = message.changeToString();
+        List<String> toStringMessage = message.changeToString();
         // extract all the date of the String message to an arraylist (checked for future date)
-        ArrayList<String> dateArray = message.checkFutureDate(toStringMessage);
+        List<String> dateArray = message.checkFutureDate(toStringMessage);
 
         // choosing numChar base on the syntax that has the most character.
-        ArrayList<String> SyntaxMessageArray = message.getSyntaxinMessage(toStringMessage, 5);
-        ArrayList<String> SyntaxMessageArray_Test = message.getDiffSyntaxMessage();
-
-
-
+        List<List<String>> SyntaxMessageArray = message.getSyntaxinMessage(toStringMessage, 5);
+        HashSet<List<String>> SyntaxMessageArray_Test = message.getDiffSyntaxMessage();
 
         System.out.println(dateArray);
         System.out.println(SyntaxMessageArray);
-        System.out.println(SyntaxMessageArray_Test);
-        // checkValidDate(toStringMessage, dateArray, HeaderArray);
+        System.out.println();
 
+        Map<List<String>, Integer> test = message.countAppearanceSyntax();
+        System.out.println(test);
 
+        System.out.println();
+        List<List<String>> mapDateandSyntax = message.getValidSyntax();
+        System.out.println(mapDateandSyntax);
+        System.out.println();
 
+        Map<List<String>, List<Date>> dateTest = message.mapSyntaxDates();
+        System.out.println(dateTest);
 
+        System.out.println();
 
+        Map<List<String>, List<Date>> dateTest_second = message.checkDate_1month();
+        System.out.println(dateTest_second);
+//        System.out.println();
+//        System.out.println(SyntaxMessageArray_Test);
 
 
     }

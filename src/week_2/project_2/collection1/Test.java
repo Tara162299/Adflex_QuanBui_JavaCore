@@ -27,8 +27,8 @@ public class Test {
 //            System.out.print(me.getKey() + ":");
 //            System.out.println(me.getValue());
 //        }
-
-
+//
+//
 //        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
 //        String dateInString = "07-06-2013";
 //        ArrayList<Date> dateArrayList = new ArrayList<>();
@@ -46,15 +46,18 @@ public class Test {
 //            System.out.println(dateArrayList.get(i));
 //        }
 
-        String startDateString = "06/27/2007";
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        String startDateString = "27-06-2007";
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         Date startDate;
         try {
             startDate = df.parse(startDateString);
-            //String newDateString = df.format(startDate);
             System.out.println(startDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
     }
+
+
 }
+
