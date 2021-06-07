@@ -18,7 +18,7 @@ public class Runner {
 
         List<String> toStringStruct = struct.changeToString();
         // extract all the syntax of the String struct to an arraylist
-        List<List<String>> HeaderStructArray = struct.returnStructHeader(1, toStringStruct, 4);
+        List<List<String>> HeaderStructArray = struct.returnStructSyntax(1, toStringStruct, 4);
 
 
         // change message file input to String
@@ -34,7 +34,7 @@ public class Runner {
         System.out.println(SyntaxMessageArray);
         System.out.println();
 
-        Map<List<String>, Integer> test = message.countAppearanceSyntax();
+        Map<List<String>, Integer> test = message.countAppearanceEachSyntax();
         System.out.println(test);
 
         System.out.println();
@@ -46,12 +46,6 @@ public class Runner {
         System.out.println(dateTest);
 
         System.out.println();
-
-        Map<List<String>, List<Date>> dateTest_second = message.checkDate_1month();
-        System.out.println(dateTest_second);
-//        System.out.println();
-//        System.out.println(SyntaxMessageArray_Test);
-
 
     }
 

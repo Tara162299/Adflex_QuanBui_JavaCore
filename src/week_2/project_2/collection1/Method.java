@@ -34,7 +34,7 @@ class Method {
         return text;
     }
 
-    // get the array containing desired characters from a string (using for struct header)
+    // get the array containing desired characters from a string (using for struct syntax)
     public List<String> getChar(int startIndex, String s, int numChar) {
         List<String> charArray = new ArrayList<>();
         for (int i = startIndex; i <= (startIndex + numChar - 1); i++) {
@@ -46,14 +46,14 @@ class Method {
         return charArray;
     }
 
-    List<List<String>> Header = new ArrayList<>();
+    List<List<String>> getSyntaxStruct = new ArrayList<>();
 
-    // arraylist to store all syntax in each line (using for struct header)
-    public List<List<String>> returnStructHeader(int startIndex, List<String> struct, int numChar) {
+    // arraylist to store all syntax in each line (using for struct syntax)
+    public List<List<String>> returnStructSyntax(int startIndex, List<String> struct, int numChar) {
         for (int j = 0; j < struct.size() - 1; j++) {             // tai sao phai -1 o day
-            Header.add(getChar(startIndex, struct.get(j), numChar));
+            getSyntaxStruct.add(getChar(startIndex, struct.get(j), numChar));
         }
-        return Header;
+        return getSyntaxStruct;
     }
 
     List<String> checkFutureDate = new ArrayList<>();
@@ -87,31 +87,31 @@ class Method {
         return checkFutureDate;
     }
 
-    List<List<String>> Bottom = new ArrayList<>();
+    List<List<String>> originalSyntaxList = new ArrayList<>();
 
     // search for bottom syntax in each message string
     public List<List<String>> getSyntaxinMessage(List<String> message, int numChar) {
         // array list to store a single header
         for (int j = 0; j < message.size(); j++) {             // tai sao phai -1 o day
             int startIndex = message.get(j).length() - numChar;
-            Bottom.add(getChar(startIndex, message.get(j), numChar));
+            originalSyntaxList.add(getChar(startIndex, message.get(j), numChar));
         }
-        return Bottom;
+        return originalSyntaxList;
     }
 
-    HashSet<List<String>> DiffBottom = new LinkedHashSet<>();
+    HashSet<List<String>> DiffSyntaxinMessage = new LinkedHashSet<>();
 
     // return Hashset of different syntax in message
     public HashSet<List<String>> getDiffSyntaxMessage() {
-        for (int i = 0; i < Bottom.size(); i++) {
-            DiffBottom.add(Bottom.get(i));
+        for (int i = 0; i < originalSyntaxList.size(); i++) {
+            DiffSyntaxinMessage.add(originalSyntaxList.get(i));
         }
-        return DiffBottom;
+        return DiffSyntaxinMessage;
     }
 
-    Map<List<String>, Integer> countAppearanceSyntax = new LinkedHashMap<>();
+    Map<List<String>, Integer> countAppearanceEachSyntax = new LinkedHashMap<>();
 
-    public Map<List<String>, Integer> countAppearanceSyntax() {
+    public Map<List<String>, Integer> countAppearanceEachSyntax() {
         List<String> newCheckFutureDate = new ArrayList<>();
         List<List<String>> newBottom = new ArrayList<>();
         // new list containing only valid dates
@@ -119,7 +119,7 @@ class Method {
         for (int i = 0; i < checkFutureDate.size(); i++) {
             if (!checkFutureDate.get(i).equals(("Invalid date"))) {
                 newCheckFutureDate.add(checkFutureDate.get(i));
-                newBottom.add(Bottom.get(i));
+                newBottom.add(originalSyntaxList.get(i));
 
             }
         }
@@ -127,72 +127,34 @@ class Method {
         // count the appearance of each syntax in the newBottom list
         int countSyntax = 0;
 
-        for (List<String> key : Bottom) {
-            countAppearanceSyntax.put(key, countSyntax);
+        for (List<String> key : originalSyntaxList) {
+            countAppearanceEachSyntax.put(key, countSyntax);
         }
 
-        for (List<String> key : DiffBottom) {
+        for (List<String> key : DiffSyntaxinMessage) {
             int bound = newBottom.size();
             for (int i = 0; i < bound; i++) {
                 if (key.equals(newBottom.get(i))) {
-                    int temp = countAppearanceSyntax.get(key) + 1;
-                    countAppearanceSyntax.replace(key, temp);
+                    int temp = countAppearanceEachSyntax.get(key) + 1;
+                    countAppearanceEachSyntax.replace(key, temp);
                 }
             }
         }
 
-        return countAppearanceSyntax;
+        return countAppearanceEachSyntax;
     }
 
-    List<List<String>> listValidSyntax = new ArrayList<>();
+    List<List<String>> validSyntaxList = new ArrayList<>();
 
-    //list containing all the syntax that is valid (appear at least 1 time)
+    //list containing all the syntax that validly appear at least 1 time
     public List<List<String>> getValidSyntax() {
-        for (List<String> key : countAppearanceSyntax.keySet()) {
-            if (countAppearanceSyntax.get(key) > 0) {
-                listValidSyntax.add(key);
+        for (List<String> key : countAppearanceEachSyntax.keySet()) {
+            if (countAppearanceEachSyntax.get(key) > 0) {
+                validSyntaxList.add(key);
             }
         }
 
-        return listValidSyntax;
-    }
-
-    Map<List<String>, List<Date>> mapSyntaxDates = new LinkedHashMap<>();
-
-    //from the validate dateArray above, check the struct bottom and time to see if it is at least 1 month away
-    public Map<List<String>, List<Date>> mapSyntaxDates() {
-
-        // loop checking every syntax that is valid
-        for (List<String> validSyntax : listValidSyntax) {
-            int count = 0;
-            List<Integer> indexList = new ArrayList<>();
-            List<Date> dateCorrespondingToEachSyntax = new ArrayList<>();
-            // loop to get index of the syntax in the date array
-            for (List<String> syntax : Bottom) {
-                if (validSyntax.equals(syntax)) {
-                    indexList.add(count);
-                }
-                count++;
-            }
-            // loop to store all string date that has the same syntax
-            for (int messageDateIndex : indexList) {
-                String dateEachSyntax = checkFutureDate.get(messageDateIndex);
-
-                DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-                if (!dateEachSyntax.equals("Invalid date")) {
-                    try {
-                        Date eachDateinSameSyntax = df.parse(dateEachSyntax);
-                        dateCorrespondingToEachSyntax.add(eachDateinSameSyntax);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                 //   List<Date> newDateCorrespondingToEachSyntax = Collections.sort(dateCorrespondingToEachSyntax);
-                    mapSyntaxDates.put(validSyntax, dateCorrespondingToEachSyntax);
-                }
-            }
-        }
-        return mapSyntaxDates;
+        return validSyntaxList;
     }
 
     // add specifically 1 month to the current date
@@ -203,12 +165,49 @@ class Method {
         return cal.getTime();
     }
 
+
+
     // new map of each syntax and dates that satisfies the 1-month rule
-    Map<List<String>, List<Date>> Final_mapSyntaxDates = new LinkedHashMap<>();
+    Map<List<String>, List<Date>> mapSyntaxDates_Final = new LinkedHashMap<>();
 
-    // get the final map of each syntax with final valid dates
-    public Map<List<String>, List<Date>> checkDate_1month() {
+    // map syntax (key) and dates having the syntax (values)
+    public Map<List<String>, List<Date>> mapSyntaxDates() {
+        Map<List<String>, List<Date>> mapSyntaxDates = new LinkedHashMap<>();
 
+        // loop mapping each syntax to the corresponding dates
+        for (List<String> validSyntax : validSyntaxList) {
+            int count = 0;
+            List<Integer> indexList = new ArrayList<>();
+            List<Date> dateCorrespondingToEachSyntax = new ArrayList<>();
+
+            // loop to get index of the syntax in the date array
+            for (List<String> syntax : originalSyntaxList) {
+                if (validSyntax.equals(syntax)) {
+                    indexList.add(count);
+                }
+                count++;
+            }
+
+            // loop to store all dates that has the same syntax
+            for (int messageDateIndex : indexList) {
+                String dateEachSyntax = checkFutureDate.get(messageDateIndex);
+
+                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                if (!dateEachSyntax.equals("Invalid date")) {
+                    try {
+                        Date eachDateinSameSyntax = dateFormat.parse(dateEachSyntax);
+                        dateCorrespondingToEachSyntax.add(eachDateinSameSyntax);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    Collections.sort(dateCorrespondingToEachSyntax);
+                    mapSyntaxDates.put(validSyntax, dateCorrespondingToEachSyntax);
+                }
+            }
+        }
+
+        // applying one-month rule to get final date
         for (List<String> eachSyntax : mapSyntaxDates.keySet()) {
             List<Date> listDateEachSyntax = mapSyntaxDates.get(eachSyntax);
             List<Date> finalDateList = new ArrayList<>();
@@ -222,9 +221,15 @@ class Method {
                     firstDate = date;
                 }
             }
-            Final_mapSyntaxDates.put(eachSyntax, finalDateList);
+            mapSyntaxDates_Final.put(eachSyntax, finalDateList);
         }
-        return Final_mapSyntaxDates;
+        return mapSyntaxDates_Final;
+    }
+
+    public void returnFinalMessage () {
+        for (List<String> eachMessage : mapSyntaxDates_Final.keySet()) {
+            
+        }
     }
 }
 
