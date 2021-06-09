@@ -8,10 +8,10 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Method {
+class helperMethods {
     File file;
 
-    public Method(File file) {
+    public helperMethods(File file) {
         this.file = file;
     }
 
@@ -56,10 +56,10 @@ class Method {
         return getSyntaxStruct;
     }
 
-    List<String> checkFutureDate = new ArrayList<>();
+    List<String> originalDateList = new ArrayList<>();
 
     // return a string arraylist of all valid date (checking for future dates)
-    public List<String> checkFutureDate(List<String> message) {
+    public List<String> originalDateList(List<String> message) {
         String eachMessageLine;
         Date currentDate = new Date();
 
@@ -69,10 +69,11 @@ class Method {
 
         for (int i = 0; i < message.size(); i++) {
             eachMessageLine = message.get(i);
-            Matcher m = Pattern.compile(dateRegex).matcher(eachMessageLine);
-            if (m.find()) {
+            Matcher matcher = Pattern.compile(dateRegex).matcher(eachMessageLine);
+
+            if (matcher.find()) {
                 try {
-                    Date date = new SimpleDateFormat("dd-MM-yyyy").parse(m.group(0));
+                    Date date = new SimpleDateFormat("dd-MM-yyyy").parse(matcher.group(0));
                     if (date.before(currentDate)) {
                         stringDate = formatDate.format(date);
                     } else {
@@ -81,10 +82,10 @@ class Method {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                checkFutureDate.add(stringDate);
+                originalDateList.add(stringDate);
             }
         }
-        return checkFutureDate;
+        return originalDateList;
     }
 
     List<List<String>> originalSyntaxList = new ArrayList<>();
@@ -116,9 +117,9 @@ class Method {
         List<List<String>> newBottom = new ArrayList<>();
         // new list containing only valid dates
         // new list containing only syntax corresponding with valid dates
-        for (int i = 0; i < checkFutureDate.size(); i++) {
-            if (!checkFutureDate.get(i).equals(("Invalid date"))) {
-                newCheckFutureDate.add(checkFutureDate.get(i));
+        for (int i = 0; i < originalDateList.size(); i++) {
+            if (!originalDateList.get(i).equals(("Invalid date"))) {
+                newCheckFutureDate.add(originalDateList.get(i));
                 newBottom.add(originalSyntaxList.get(i));
 
             }
@@ -166,7 +167,6 @@ class Method {
     }
 
 
-
     // new map of each syntax and dates that satisfies the 1-month rule
     Map<List<String>, List<Date>> mapSyntaxDates_Final = new LinkedHashMap<>();
 
@@ -190,7 +190,7 @@ class Method {
 
             // loop to store all dates that has the same syntax
             for (int messageDateIndex : indexList) {
-                String dateEachSyntax = checkFutureDate.get(messageDateIndex);
+                String dateEachSyntax = originalDateList.get(messageDateIndex);
 
                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 if (!dateEachSyntax.equals("Invalid date")) {
@@ -226,11 +226,75 @@ class Method {
         return mapSyntaxDates_Final;
     }
 
-    public void returnFinalMessage () {
-        for (List<String> eachMessage : mapSyntaxDates_Final.keySet()) {
-            
+
+    public List<String> getDateToString(List<Date> dateList) {
+        List<String> dateToString = new ArrayList<>();
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS"); //change date to string
+
+        for (int i = 0; i < dateList.size(); i++) {
+            Date date = dateList.get(i);
+            String dateString = formatDate.format(date);
+            dateToString.add(dateString);
         }
+
+        return dateToString;
+    }
+
+
+    public File[] createOutputFile(List<String> message) {
+        int indexFiles = 0;
+        File[] outputFiles = new File[mapSyntaxDates_Final.size()];
+
+        for (List<String> syntaxChecking : mapSyntaxDates_Final.keySet()) {
+            // creating new output file of the valid syntaxs
+            StringBuilder strbul = new StringBuilder();
+
+            for (String str : syntaxChecking) {
+                strbul.append(str);
+            }
+            outputFiles[indexFiles] = new File("/Users/martinbui/IdeaProjects/Project_1/Resource/Project2_Collection1/" + strbul + ".txt");
+            indexFiles += 1;
+
+            // check and write valid message to the corresponding output file
+            for (List<String> messageSyntaxChecking : originalSyntaxList) {
+
+                // checking if the syntax of mapSyntaxDates is the same as original syntax list
+                if (syntaxChecking.equals(messageSyntaxChecking)) {
+                    List<Date> dateChecking = mapSyntaxDates_Final.get(syntaxChecking);
+                    int count = dateChecking.size();
+                    int indexSyntaxMessage = originalSyntaxList.indexOf(messageSyntaxChecking);
+
+                    for (int i = 0; i < count; i++) {
+                        // if the date from original date list = date from map
+                        if (originalDateList.get(indexSyntaxMessage).equals(getDateToString(dateChecking).get(i))) {
+                            if (count > 1) {
+                                System.out.println("It worked");
+                                dateChecking.remove(dateChecking.get(i));
+                                count--;
+                            } else {
+                                System.out.println("It worked");
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        return outputFiles;
     }
 }
+
+
+//try {
+//                                FileWriter fw = new FileWriter(outputFiles[indexFiles].getAbsoluteFile(),true);
+//                                BufferedWriter bw = new BufferedWriter(fw);
+//                                bw.write(message.get(indexSyntaxMessage));
+//                                bw.flush();
+//                                bw.close();
+//
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+
 
 
