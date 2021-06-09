@@ -1,6 +1,9 @@
 package week_2.project_2.collection1;
 
-import java.io.*;
+import java.io.File;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -28,16 +31,11 @@ public class Runner {
         List<String> dateArray = message.originalDateList(toStringMessage);
 
         // choosing numChar base on the syntax that has the most character.
-        List<List<String>> SyntaxMessageArray = message.getSyntaxinMessage(toStringMessage, 5);
+        List<List<String>> SyntaxMessageList = message.getSyntaxinMessage(toStringMessage, 5);
         message.getDiffSyntaxMessage();
 
-//        Date date = new Date();
-//        List<Date> newDate = new ArrayList<>();
-//        newDate.add(date);
-//        System.out.println(message.getDateToString(newDate));
-
         System.out.println(dateArray);
-        System.out.println(SyntaxMessageArray);
+        System.out.println(SyntaxMessageList);
         System.out.println();
 
         Map<List<String>, Integer> test = message.countAppearanceEachSyntax();
@@ -48,14 +46,60 @@ public class Runner {
         System.out.println(mapDateandSyntax);
         System.out.println();
 
-        Map<List<String>, List<Date>> dateTest = message.mapSyntaxDates();
-        System.out.println(dateTest);
+        Map<List<String>, List<Date>> syntaxDateMap = message.mapSyntaxDates();
+        System.out.println(syntaxDateMap);
 
         System.out.println();
 
-        File[] outputFiles = message.createOutputFile(toStringMessage);
-        for (int i = 0; i < outputFiles.length; i++) {
-        //    System.out.println(outputFiles[i].exists());
+        File[] test_Final = message.test(toStringMessage);
+        for (int i = 0; i < test_Final.length; i++) {
+            System.out.println(test_Final[i].exists());
         }
+
+
+        int indexFiles = 0;
+        File[] outputFiles = new File[syntaxDateMap.size()];
+
+        for (List<String> syntaxChecking : syntaxDateMap.keySet()) {
+            // creating new output file of the valid syntaxs
+            StringBuilder strbul = new StringBuilder();
+
+            for (String str : syntaxChecking) {
+                strbul.append(str);
+            }
+            outputFiles[indexFiles] = new File("/Users/martinbui/IdeaProjects/Project_1/Resource/Project2_Collection1/" + strbul + ".txt");
+            indexFiles += 1;
+
+            // check and write valid message to the corresponding output file
+
+            for (List<String> messageSyntaxChecking : SyntaxMessageList) {
+
+                // checking if the syntax of mapSyntaxDates is the same as original syntax list
+                if (syntaxChecking.equals(messageSyntaxChecking)) {
+                    List<Date> dateChecking = syntaxDateMap.get(syntaxChecking);
+                    int indexSyntaxMessage = SyntaxMessageList.indexOf(messageSyntaxChecking);
+
+                    for (int i = 0; i < dateChecking.size(); i++) {
+                        // if the date from original date list = date from map
+                        if (SyntaxMessageList.get(indexSyntaxMessage).equals(message.getDateToString(dateChecking).get(i))) {
+
+                            String messageChosen = toStringMessage.get(indexSyntaxMessage);
+                            try {
+                                FileWriter fw = new FileWriter(outputFiles[indexFiles].getAbsoluteFile(), true);
+                                fw.write(messageChosen);
+                                fw.flush();
+                                fw.close();
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
     }
 }
+

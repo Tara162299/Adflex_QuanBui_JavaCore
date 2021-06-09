@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class helperMethods {
+public class helperMethods {
     File file;
 
     public helperMethods(File file) {
@@ -240,8 +240,7 @@ class helperMethods {
         return dateToString;
     }
 
-
-    public File[] createOutputFile(List<String> message) {
+    public File[] test (List<String> message) {
         int indexFiles = 0;
         File[] outputFiles = new File[mapSyntaxDates_Final.size()];
 
@@ -256,45 +255,37 @@ class helperMethods {
             indexFiles += 1;
 
             // check and write valid message to the corresponding output file
+
             for (List<String> messageSyntaxChecking : originalSyntaxList) {
 
                 // checking if the syntax of mapSyntaxDates is the same as original syntax list
                 if (syntaxChecking.equals(messageSyntaxChecking)) {
                     List<Date> dateChecking = mapSyntaxDates_Final.get(syntaxChecking);
-                    int count = dateChecking.size();
                     int indexSyntaxMessage = originalSyntaxList.indexOf(messageSyntaxChecking);
 
-                    for (int i = 0; i < count; i++) {
+                    for (int i = 0; i < dateChecking.size(); i++) {
                         // if the date from original date list = date from map
-                        if (originalDateList.get(indexSyntaxMessage).equals(getDateToString(dateChecking).get(i))) {
-                            if (count > 1) {
-                                System.out.println("It worked");
-                                dateChecking.remove(dateChecking.get(i));
-                                count--;
-                            } else {
-                                System.out.println("It worked");
+                        if (originalSyntaxList.get(indexSyntaxMessage).equals(getDateToString(dateChecking).get(i))) {
+
+                            String messageChosen = message.get(indexSyntaxMessage);
+                            try {
+                                FileWriter fw = new FileWriter(outputFiles[indexFiles].getAbsoluteFile(), true);
+                                fw.write(messageChosen);
+                                fw.flush();
+                                fw.close();
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
                         }
                     }
                 }
             }
-
         }
         return outputFiles;
     }
 }
 
-
-//try {
-//                                FileWriter fw = new FileWriter(outputFiles[indexFiles].getAbsoluteFile(),true);
-//                                BufferedWriter bw = new BufferedWriter(fw);
-//                                bw.write(message.get(indexSyntaxMessage));
-//                                bw.flush();
-//                                bw.close();
-//
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
 
 
 
