@@ -42,23 +42,15 @@ public class Runner {
         System.out.println(test);
 
         System.out.println();
-        List<List<String>> mapDateandSyntax = message.getValidSyntax();
-        System.out.println(mapDateandSyntax);
-        System.out.println();
+        message.getValidSyntax();
+
+
 
         Map<List<String>, List<Date>> syntaxDateMap = message.mapSyntaxDates();
         System.out.println(syntaxDateMap);
 
         System.out.println();
 
-        File[] test_Final = message.test(toStringMessage);
-        for (int i = 0; i < test_Final.length; i++) {
-            System.out.println(test_Final[i].exists());
-        }
-
-
-        int indexFiles = 0;
-        File[] outputFiles = new File[syntaxDateMap.size()];
 
         for (List<String> syntaxChecking : syntaxDateMap.keySet()) {
             // creating new output file of the valid syntaxs
@@ -67,8 +59,6 @@ public class Runner {
             for (String str : syntaxChecking) {
                 strbul.append(str);
             }
-            outputFiles[indexFiles] = new File("/Users/martinbui/IdeaProjects/Project_1/Resource/Project2_Collection1/" + strbul + ".txt");
-            indexFiles += 1;
 
             // check and write valid message to the corresponding output file
 
@@ -81,11 +71,11 @@ public class Runner {
 
                     for (int i = 0; i < dateChecking.size(); i++) {
                         // if the date from original date list = date from map
-                        if (SyntaxMessageList.get(indexSyntaxMessage).equals(message.getDateToString(dateChecking).get(i))) {
+                        if (dateArray.get(indexSyntaxMessage).equals(message.getDateToString(dateChecking).get(i))) {
 
                             String messageChosen = toStringMessage.get(indexSyntaxMessage);
                             try {
-                                FileWriter fw = new FileWriter(outputFiles[indexFiles].getAbsoluteFile(), true);
+                                FileWriter fw = new FileWriter("/Users/martinbui/IdeaProjects/Project_1/Resource/Project2_Collection1/" + strbul + ".txt");
                                 fw.write(messageChosen);
                                 fw.flush();
                                 fw.close();
@@ -98,8 +88,6 @@ public class Runner {
                 }
             }
         }
-
-
     }
 }
 

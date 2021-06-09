@@ -239,51 +239,6 @@ public class helperMethods {
 
         return dateToString;
     }
-
-    public File[] test (List<String> message) {
-        int indexFiles = 0;
-        File[] outputFiles = new File[mapSyntaxDates_Final.size()];
-
-        for (List<String> syntaxChecking : mapSyntaxDates_Final.keySet()) {
-            // creating new output file of the valid syntaxs
-            StringBuilder strbul = new StringBuilder();
-
-            for (String str : syntaxChecking) {
-                strbul.append(str);
-            }
-            outputFiles[indexFiles] = new File("/Users/martinbui/IdeaProjects/Project_1/Resource/Project2_Collection1/" + strbul + ".txt");
-            indexFiles += 1;
-
-            // check and write valid message to the corresponding output file
-
-            for (List<String> messageSyntaxChecking : originalSyntaxList) {
-
-                // checking if the syntax of mapSyntaxDates is the same as original syntax list
-                if (syntaxChecking.equals(messageSyntaxChecking)) {
-                    List<Date> dateChecking = mapSyntaxDates_Final.get(syntaxChecking);
-                    int indexSyntaxMessage = originalSyntaxList.indexOf(messageSyntaxChecking);
-
-                    for (int i = 0; i < dateChecking.size(); i++) {
-                        // if the date from original date list = date from map
-                        if (originalSyntaxList.get(indexSyntaxMessage).equals(getDateToString(dateChecking).get(i))) {
-
-                            String messageChosen = message.get(indexSyntaxMessage);
-                            try {
-                                FileWriter fw = new FileWriter(outputFiles[indexFiles].getAbsoluteFile(), true);
-                                fw.write(messageChosen);
-                                fw.flush();
-                                fw.close();
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return outputFiles;
-    }
 }
 
 
