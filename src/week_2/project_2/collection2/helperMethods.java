@@ -36,13 +36,11 @@ public class helperMethods {
     }
 
 
-    List<String> originalDateList = new ArrayList<>();
-
-    // return a string arraylist of all valid date (checking for future dates)
     public List<String> originalDateList(List<String> message) {
+        List<String> originalDateList = new ArrayList<>();
         String eachMessageLine;
 
-        String dateRegex = "^\\d\\d\\d\\d\\/([0]{0,1}[1-9]|1[012])\\/([1-9]|([012][0-9])|(3[01])) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d$";
+        String dateRegex = "(\\d\\d\\d\\d)\\/([0]{0,1}[1-9]|1[012])\\/([1-9]|([012][0-9])|(3[01])) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d$";
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS");
         String stringDate = null;
 
@@ -54,7 +52,6 @@ public class helperMethods {
                 try {
                     Date date = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS").parse(matcher.group());
                     stringDate = formatDate.format(date);
-
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

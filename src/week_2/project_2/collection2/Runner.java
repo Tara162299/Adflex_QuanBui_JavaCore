@@ -7,7 +7,7 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) {
 
-        File files = new File("Resource/Project2_Collection2/input/");
+        File files = new File("Resource/Project2_Collection2/input");
         List<File> fileList = new ArrayList<>();
 
         for (File f : files.listFiles()) {
