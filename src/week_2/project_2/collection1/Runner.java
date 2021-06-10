@@ -11,8 +11,8 @@ import java.util.Map;
 public class Runner {
     public static void main(String[] args) {
 
-        File messageInput = new File("Resource/Project2_Collection1/message.txt");
-        File structInput = new File("Resource/Project2_Collection1/struct.txt");
+        File messageInput = new File("Resource/Project2_Collection1/input/message.txt");
+        File structInput = new File("Resource/Project2_Collection1/input/struct.txt");
 
         helperMethods message = new helperMethods(messageInput);
         helperMethods struct = new helperMethods(structInput);
@@ -42,7 +42,6 @@ public class Runner {
             }
 
             // check and write valid message to the corresponding output file
-
             for (List<String> messageSyntaxChecking : SyntaxMessageList) {
 
                 // checking if the syntax of mapSyntaxDates is the same as original syntax list
