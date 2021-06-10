@@ -46,16 +46,6 @@ public class helperMethods {
         return charArray;
     }
 
-    List<List<String>> getSyntaxStruct = new ArrayList<>();
-
-    // arraylist to store all syntax in each line (using for struct syntax)
-    public List<List<String>> returnStructSyntax(int startIndex, List<String> struct, int numChar) {
-        for (int j = 0; j < struct.size() - 1; j++) {             // tai sao phai -1 o day
-            getSyntaxStruct.add(getChar(startIndex, struct.get(j), numChar));
-        }
-        return getSyntaxStruct;
-    }
-
     List<String> originalDateList = new ArrayList<>();
 
     // return a string arraylist of all valid date (checking for future dates)
