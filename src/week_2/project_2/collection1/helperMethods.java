@@ -63,8 +63,8 @@ public class helperMethods {
         String eachMessageLine;
         Date currentDate = new Date();
 
-        String dateRegex = "(\\d{2}-\\d{2}-\\d{4})";
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS"); //change date to string
+        String dateRegex = "([1-9]|([012][0-9])|(3[01]))\\-([0]{0,1}[1-9]|1[012])\\-(\\d\\d\\d\\d) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d";
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS");
         String stringDate = null;
 
         for (int i = 0; i < message.size(); i++) {
@@ -73,7 +73,7 @@ public class helperMethods {
 
             if (matcher.find()) {
                 try {
-                    Date date = new SimpleDateFormat("dd-MM-yyyy").parse(matcher.group(0));
+                    Date date = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS").parse(matcher.group());
                     if (date.before(currentDate)) {
                         stringDate = formatDate.format(date);
                     } else {
@@ -192,7 +192,7 @@ public class helperMethods {
             for (int messageDateIndex : indexList) {
                 String dateEachSyntax = originalDateList.get(messageDateIndex);
 
-                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS");
                 if (!dateEachSyntax.equals("Invalid date")) {
                     try {
                         Date eachDateinSameSyntax = dateFormat.parse(dateEachSyntax);

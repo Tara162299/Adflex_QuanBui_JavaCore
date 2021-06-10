@@ -12,10 +12,7 @@ public class Runner {
     public static void main(String[] args) {
 
         File messageInput = new File("Resource/Project2_Collection1/input/message.txt");
-        File structInput = new File("Resource/Project2_Collection1/input/struct.txt");
-
         helperMethods message = new helperMethods(messageInput);
-        helperMethods struct = new helperMethods(structInput);
 
         // change message file input to String
         List<String> toStringMessage = message.changeToString();
@@ -25,6 +22,7 @@ public class Runner {
         // choosing numChar base on the syntax that has the most character.
         List<List<String>> SyntaxMessageList = message.getSyntaxinMessage(toStringMessage, 5);
         message.getDiffSyntaxMessage();
+
 
         // map each syntax with its number of valid appearances
         message.countAppearanceEachSyntax();
@@ -42,6 +40,7 @@ public class Runner {
             }
 
             // check and write valid message to the corresponding output file
+
             for (List<String> messageSyntaxChecking : SyntaxMessageList) {
 
                 // checking if the syntax of mapSyntaxDates is the same as original syntax list
@@ -55,7 +54,7 @@ public class Runner {
 
                             String messageChosen = toStringMessage.get(indexSyntaxMessage);
                             try {
-                                FileWriter fw = new FileWriter("/Users/martinbui/IdeaProjects/Project_1/Resource/Project2_Collection1/" + strbul + ".txt");
+                                FileWriter fw = new FileWriter("Resource/Project2_Collection1/output/" + strbul + ".txt");
                                 fw.write(messageChosen);
                                 fw.flush();
                                 fw.close();
