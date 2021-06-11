@@ -8,11 +8,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class Runner {
+public class Runner_1 {
     public static void main(String[] args) {
 
         File messageInput = new File("Resource/Project2_Collection1/input/message.txt");
-        helperMethods message = new helperMethods(messageInput);
+        helperMethods_1 message = new helperMethods_1(messageInput);
 
         // change message file input to String
         List<String> toStringMessage = message.changeToString();

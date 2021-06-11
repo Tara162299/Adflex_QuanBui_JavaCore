@@ -8,10 +8,10 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class helperMethods {
+public class helperMethods_1 {
     File file;
 
-    public helperMethods(File file) {
+    public helperMethods_1(File file) {
         this.file = file;
     }
 
@@ -157,11 +157,11 @@ public class helperMethods {
     }
 
 
-    // new map of each syntax and dates that satisfies the 1-month rule
-    Map<List<String>, List<Date>> mapSyntaxDates_Final = new LinkedHashMap<>();
-
     // map syntax (key) and dates having the syntax (values)
     public Map<List<String>, List<Date>> mapSyntaxDates() {
+        // new map of each syntax and dates that satisfies the 1-month rule
+        Map<List<String>, List<Date>> mapSyntaxDates_Final = new LinkedHashMap<>();
+
         Map<List<String>, List<Date>> mapSyntaxDates = new LinkedHashMap<>();
 
         // loop mapping each syntax to the corresponding dates

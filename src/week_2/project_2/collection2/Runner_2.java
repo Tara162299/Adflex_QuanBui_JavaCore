@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Runner {
+public class Runner_2 {
     public static void main(String[] args) {
 
         File files = new File("Resource/Project2_Collection2/input");
@@ -15,10 +15,10 @@ public class Runner {
             fileList.add(f);
         }
 
-        helperMethods[] fileArrays = new helperMethods[files.listFiles().length];
+        helperMethods_2[] fileArrays = new helperMethods_2[files.listFiles().length];
         int count = 0;
         for (File f : fileList) {
-            fileArrays[count] = new helperMethods(f.getAbsoluteFile());
+            fileArrays[count] = new helperMethods_2(f.getAbsoluteFile());
             count++;
         }
 
