@@ -57,17 +57,17 @@ public class Runner_2 {
         }
 
         // a list of all String dates in the input files
-        List<String> dateString = new ArrayList<>();
+        List<String> dateStringforName = new ArrayList<>();
         for (int i = 0; i < dateStringListforName.size(); i++) {
             for (String date : dateStringListforName.get(i)) {
-                dateString.add(date);
+                dateStringforName.add(date);
             }
         }
 
-        List<String> dateStringWithTime = new ArrayList<>();
+        List<String> dateStringforContent = new ArrayList<>();
         for (int i = 0; i < dateStringListFinal.size(); i++) {
             for (String date : dateStringListFinal.get(i)) {
-                dateStringWithTime.add(date);
+                dateStringforContent.add(date);
             }
         }
 
@@ -79,8 +79,8 @@ public class Runner_2 {
 
             // get the index of all dates in dateString that are equal to current-loop date in dateString
             List<Integer> indexList = new ArrayList<>();
-            for (int i = 0; i < dateString.size(); i++) {
-                if (dateString.get(i).equals(date)) {
+            for (int i = 0; i < dateStringforName.size(); i++) {
+                if (dateStringforName.get(i).equals(date)) {
                     indexList.add(i);
                 }
             }
@@ -88,7 +88,7 @@ public class Runner_2 {
             // add all dates that having the index in indexList to a new date list
             List<String> chosenDate = new ArrayList<>();
             for (int i : indexList) {
-                chosenDate.add(dateStringWithTime.get(i));
+                chosenDate.add(dateStringforContent.get(i));
             }
 
             Collections.sort(chosenDate);
