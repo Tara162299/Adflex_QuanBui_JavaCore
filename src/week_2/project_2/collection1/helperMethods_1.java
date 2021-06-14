@@ -162,6 +162,7 @@ public class helperMethods_1 {
         // new map of each syntax and dates that satisfies the 1-month rule
         Map<List<String>, List<Date>> mapSyntaxDates_Final = new LinkedHashMap<>();
 
+        // map of each syntax and dates before satisfies the 1-month rule
         Map<List<String>, List<Date>> mapSyntaxDates = new LinkedHashMap<>();
 
         // loop mapping each syntax to the corresponding dates
