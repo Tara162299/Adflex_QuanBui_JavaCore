@@ -27,23 +27,16 @@ public class Runner_2 {
         for (File f : fileList) {
             fileArrays[count] = new helperMethods_2(f.getAbsoluteFile());
             phoneNum.add(fileArrays[count].getPhone(f));
-            //System.out.println(fileArrays[count].getPhone(f));
             count++;
         }
-        System.out.println();
 
-        // list to store all String list for dates for all input files
         List<List<String>> dateStringListforName = new ArrayList<>();
-
-        List<List<String>> dateStringListforContent = new ArrayList<>();
 
         List<List<String>> dateStringListFinal = new ArrayList<>();
 
         // loop to create each Date list and String list for dates for each input file
         for (int i = 0; i < fileArrays.length; i++) {
-            System.out.println(fileArrays[i].changeToString());
-            String s = phoneNum.get(i);
-            System.out.println(s);
+            String phoneNumber = phoneNum.get(i);
 
             List<String> DateStringforContent = fileArrays[i].getDateStringforContent(fileArrays[i].changeToString());
             List<String> DateStringforName = fileArrays[i].getDateStringforName(fileArrays[i].changeToString());
@@ -54,19 +47,13 @@ public class Runner_2 {
             List<String> DateStringFinal = new ArrayList<>();
 
             for (int j = 0; j < DateStringforContent.size(); j++) {
-                String added = fileArrays[i].insertString(DateStringforContent.get(j), s);
+                String added = fileArrays[i].insertString(DateStringforContent.get(j), phoneNumber);
                 DateStringFinal.add(added);
             }
             Collections.sort(DateStringFinal);
 
             dateStringListFinal.add(DateStringFinal);
             dateStringListforName.add(DateStringforName);
-            dateStringListforContent.add(DateStringforContent);
-
-            System.out.println(dateStringListforName.get(i));
-            System.out.println(dateStringListFinal.get(i));
-
-            System.out.println();
         }
 
         // a list of all String dates in the input files
@@ -78,18 +65,15 @@ public class Runner_2 {
         }
 
         List<String> dateStringWithTime = new ArrayList<>();
-        for (int i = 0; i < dateStringListforContent.size(); i++) {
+        for (int i = 0; i < dateStringListFinal.size(); i++) {
             for (String date : dateStringListFinal.get(i)) {
                 dateStringWithTime.add(date);
             }
         }
 
-        System.out.println();
         //get a set of all different dates to create output files
         Set<String> diffDateString = fileArrays[0].getDiffDateString(dateStringListforName);
-        System.out.println(diffDateString);
 
-        System.out.println();
         // creating all output files
         for (String date : diffDateString) {
 

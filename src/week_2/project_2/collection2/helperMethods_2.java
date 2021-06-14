@@ -96,7 +96,6 @@ public class helperMethods_2 {
         return tempDateList;
     }
 
-
     public StringBuilder removeCharacter(String string, char c) {
         StringBuilder result = new StringBuilder();
 
