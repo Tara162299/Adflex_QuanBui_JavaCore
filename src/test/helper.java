@@ -1,4 +1,4 @@
-package week_3;
+package test;
 
 import java.io.*;
 import java.text.ParseException;
@@ -6,13 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class helperMethods_3 {
+public class helper {
     File file;
 
-    public helperMethods_3(File file) {
+    public helper(File file) {
         this.file = file;
     }
 
