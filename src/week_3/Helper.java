@@ -1,4 +1,4 @@
-package test;
+package week_3;
 
 import java.io.*;
 import java.text.ParseException;
@@ -6,14 +6,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class helper {
+public class Helper {
     File file;
 
-    public helper(File file) {
+    public Helper(File file) {
         this.file = file;
     }
 
@@ -36,8 +35,7 @@ public class helper {
         return text;
     }
 
-    public List<String> getDateString(List<String> message) {
-        List<String> tempDateList = new ArrayList<>();
+    public String getDateString(String message) {
         String eachMessageLine;
 
         String dateRegex = "(\\d\\d\\d\\d)\\/([0]{0,1}[1-9]|1[012])\\/([1-9]|([012][0-9])|(3[01])) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d$";
@@ -45,21 +43,19 @@ public class helper {
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS");
         String stringDate = null;
 
-        for (int i = 0; i < message.size(); i++) {
-            eachMessageLine = message.get(i);
-            Matcher matcherDate = Pattern.compile(dateRegex).matcher(eachMessageLine);
+        Matcher matcherDate = Pattern.compile(dateRegex).matcher(message);
 
-            if (matcherDate.find()) {
-                try {
-                    Date date = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS").parse(matcherDate.group());
-                    stringDate = formatDate.format(date);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                tempDateList.add(stringDate);
+        if (matcherDate.find()) {
+            try {
+                Date date = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS").parse(matcherDate.group());
+                stringDate = formatDate.format(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+            //tempDateList.add(stringDate);
+
         }
-        return tempDateList;
+        return stringDate;
     }
 
     public String getShipName(String s) {
@@ -82,8 +78,9 @@ public class helper {
         return result.toString();
     }
 
-    public boolean checkShipname (String nameShip, String s) {
+    public boolean checkShipname(String nameShip, String s) {
         boolean statement = false;
+        StringBuilder result = new StringBuilder();
         String positionRegex = "\\d{2}\\d{5}\\|";
         Pattern pattern = Pattern.compile(positionRegex);
         Matcher match = pattern.matcher(s);
@@ -94,7 +91,13 @@ public class helper {
             temp = match.group();
         }
 
-        if (temp.equals(nameShip)) {
+        for (int i = 0; i < temp.length(); i++) {
+            if (temp.charAt(i) != '|') {
+                result.append(temp.charAt(i));
+            }
+        }
+
+        if ((result.toString()).equals(nameShip)) {
             statement = true;
         }
 
@@ -228,18 +231,5 @@ public class helper {
         }
 
         return statement;
-    }
-
-
-    public void checkCurrentPosition() {
-
-    }
-
-    public void checkEnterArea() {
-
-    }
-
-    public void checkLeaveArea() {
-
     }
 }

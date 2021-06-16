@@ -1,4 +1,4 @@
-package week_3;
+package test;
 
 class ThreadTest implements Runnable {
     public void run() {

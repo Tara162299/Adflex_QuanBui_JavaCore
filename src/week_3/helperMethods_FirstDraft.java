@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class helperMethods_3 {
+public class helperMethods_FirstDraft {
     File file;
 
-    public helperMethods_3(File file) {
+    public helperMethods_FirstDraft(File file) {
         this.file = file;
     }
 

@@ -1,12 +1,10 @@
-package test;
+package week_3;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class runner implements Runnable {
+public class Runner_FirstDraft implements Runnable {
 
     @Override
     public void run() {
@@ -18,27 +16,11 @@ public class runner implements Runnable {
         File area = new File("Resource/Project3/input/area.txt");
         File position = new File("Resource/Project3/input/positions.txt");
 
-        helper Area = new helper(area.getAbsoluteFile());
-        helper Position = new helper(position.getAbsoluteFile());
+        helperMethods_FirstDraft Area = new helperMethods_FirstDraft(area.getAbsoluteFile());
+        helperMethods_FirstDraft Position = new helperMethods_FirstDraft(position.getAbsoluteFile());
 
         List<String> areaInput = Area.changeToString();
         List<String> positionInput = Position.changeToString();
-
-//        Set<String> nameShipList = new HashSet<>();
-//
-//        for (int i = 0; i < positionInput.size(); i++) {
-//            String name = Position.getShipName(positionInput.get(i));
-//            nameShipList.add(name);
-//        }
-//
-//        System.out.println(nameShipList);
-//
-//        List<List<String>>[] longPositionListArray = new ArrayList[nameShipList.size()];
-//        List<List<String>>[] latPositionListArray = new ArrayList[nameShipList.size()];
-
-//        for (int i = 0; i < nameShipList.size(); i++) {
-//            if (Position.checkShipname(nameShipList.))
-//        }
 
         List<List<String>> longAreaList = new ArrayList<>();
         List<List<String>> latAreaList = new ArrayList<>();
