@@ -1,0 +1,6 @@
+9836272|Canh bao xam nhap vung|Vung 1| 200| 75| 2015/12/01 01:12:23
+9836272|Canh bao di ra khoi vung|Vung 1| 102| 100| 2015/12/01 02:12:23
+9836272|Canh bao xam nhap vung|Vung 2| 40| 120| 2015/12/01 16:12:23
+9836272|Canh bao di ra khoi vung|Vung 2| 100| 108| 2015/12/01 17:12:23
+1234567|Canh bao xam nhap vung|Vung 2| 40| 110| 2015/12/01 05:12:23
+1234567|Canh bao di ra khoi vung|Vung 2| 106| 100| 2015/12/01 06:12:23

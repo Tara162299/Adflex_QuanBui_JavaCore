@@ -71,6 +71,34 @@ public class Runner_Test implements Runnable {
             checkInorOut.add(check);
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         int indexOfShip = 0;
         for (String shipName : nameShipSet) {
             for (String s : positionInput) {
