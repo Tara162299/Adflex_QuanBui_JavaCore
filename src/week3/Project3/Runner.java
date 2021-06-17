@@ -10,6 +10,8 @@ import java.util.Set;
 
 public class Runner {
     public static void main(String[] args) {
+        long startTime = System.nanoTime();
+
         File area = new File("Resource/Project3/input/area.txt");
         File position = new File("Resource/Project3/input/positions.txt");
 
@@ -151,6 +153,10 @@ public class Runner {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+
+        long endTime   = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("The program took " + (totalTime / Math.pow(10, 9) + " second to run"));
     }
 }
 

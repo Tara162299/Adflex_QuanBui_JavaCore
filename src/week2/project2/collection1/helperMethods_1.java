@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 
 public class helperMethods_1 {
     File file;
+    Pattern timePattern = Pattern.compile("dd-MM-yyyy HH:mm:ss");
+    String invalidDate = "Invalid date";
 
     public helperMethods_1(File file) {
         this.file = file;
@@ -53,21 +55,21 @@ public class helperMethods_1 {
         String eachMessageLine;
         Date currentDate = new Date();
 
-        String dateRegex = "([1-9]|([012][0-9])|(3[01]))\\-([0]{0,1}[1-9]|1[012])\\-(\\d\\d\\d\\d) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d";
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS");
+        String dateRegex = "([1-9]|([012][0-9])|(3[01]))-([0]{0,1}[1-9]|1[012])-(\\d\\d\\d\\d) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d";
+        SimpleDateFormat formatDate = new SimpleDateFormat(timePattern.pattern());
         String stringDate = null;
 
-        for (int i = 0; i < message.size(); i++) {
-            eachMessageLine = message.get(i);
+        for (String s : message) {
+            eachMessageLine = s;
             Matcher matcher = Pattern.compile(dateRegex).matcher(eachMessageLine);
 
             if (matcher.find()) {
                 try {
-                    Date date = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS").parse(matcher.group());
+                    Date date = new SimpleDateFormat(timePattern.pattern()).parse(matcher.group());
                     if (date.before(currentDate)) {
                         stringDate = formatDate.format(date);
                     } else {
-                        stringDate = "Invalid date";
+                        stringDate = invalidDate;
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -83,9 +85,9 @@ public class helperMethods_1 {
     // search for bottom syntax in each message string
     public List<List<String>> getSyntaxinMessage(List<String> message, int numChar) {
         // array list to store a single header
-        for (int j = 0; j < message.size(); j++) {             // tai sao phai -1 o day
-            int startIndex = message.get(j).length() - numChar;
-            originalSyntaxList.add(getChar(startIndex, message.get(j), numChar));
+        for (String s : message) {             // tai sao phai -1 o day
+            int startIndex = s.length() - numChar;
+            originalSyntaxList.add(getChar(startIndex, s, numChar));
         }
         return originalSyntaxList;
     }
@@ -93,22 +95,19 @@ public class helperMethods_1 {
     HashSet<List<String>> DiffSyntaxinMessage = new LinkedHashSet<>();
 
     // return Hashset of different syntax in message
-    public HashSet<List<String>> getDiffSyntaxMessage() {
-        for (int i = 0; i < originalSyntaxList.size(); i++) {
-            DiffSyntaxinMessage.add(originalSyntaxList.get(i));
-        }
-        return DiffSyntaxinMessage;
+    public void getDiffSyntaxMessage() {
+        DiffSyntaxinMessage.addAll(originalSyntaxList);
     }
 
     Map<List<String>, Integer> countAppearanceEachSyntax = new LinkedHashMap<>();
 
-    public Map<List<String>, Integer> countAppearanceEachSyntax() {
+    public void countAppearanceEachSyntax() {
         List<String> newCheckFutureDate = new ArrayList<>();
         List<List<String>> newBottom = new ArrayList<>();
         // new list containing only valid dates
         // new list containing only syntax corresponding with valid dates
         for (int i = 0; i < originalDateList.size(); i++) {
-            if (!originalDateList.get(i).equals(("Invalid date"))) {
+            if (!originalDateList.get(i).equals((invalidDate))) {
                 newCheckFutureDate.add(originalDateList.get(i));
                 newBottom.add(originalSyntaxList.get(i));
 
@@ -123,29 +122,26 @@ public class helperMethods_1 {
         }
 
         for (List<String> key : DiffSyntaxinMessage) {
-            int bound = newBottom.size();
-            for (int i = 0; i < bound; i++) {
-                if (key.equals(newBottom.get(i))) {
+            for (List<String> strings : newBottom) {
+                if (key.equals(strings)) {
                     int temp = countAppearanceEachSyntax.get(key) + 1;
                     countAppearanceEachSyntax.replace(key, temp);
                 }
             }
         }
 
-        return countAppearanceEachSyntax;
     }
 
     List<List<String>> validSyntaxList = new ArrayList<>();
 
     //list containing all the syntax that validly appear at least 1 time
-    public List<List<String>> getValidSyntax() {
+    public void getValidSyntax() {
         for (List<String> key : countAppearanceEachSyntax.keySet()) {
             if (countAppearanceEachSyntax.get(key) > 0) {
                 validSyntaxList.add(key);
             }
         }
 
-        return validSyntaxList;
     }
 
     // add specifically 1 month to the current date
@@ -183,7 +179,7 @@ public class helperMethods_1 {
             for (int messageDateIndex : indexList) {
                 String dateEachSyntax = originalDateList.get(messageDateIndex);
 
-                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS");
+                DateFormat dateFormat = new SimpleDateFormat(timePattern.pattern());
                 if (!dateEachSyntax.equals("Invalid date")) {
                     try {
                         Date eachDateinSameSyntax = dateFormat.parse(dateEachSyntax);
@@ -220,10 +216,9 @@ public class helperMethods_1 {
 
     public List<String> getDateToString(List<Date> dateList) {
         List<String> dateToString = new ArrayList<>();
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS"); //change date to string
+        SimpleDateFormat formatDate = new SimpleDateFormat(timePattern.pattern()); //change date to string
 
-        for (int i = 0; i < dateList.size(); i++) {
-            Date date = dateList.get(i);
+        for (Date date : dateList) {
             String dateString = formatDate.format(date);
             dateToString.add(dateString);
         }

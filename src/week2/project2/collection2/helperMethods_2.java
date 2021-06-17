@@ -35,11 +35,8 @@ public class helperMethods_2 {
 
 
     public String insertString(String originalString, String stringToBeInserted) {
-        StringBuilder newString = new StringBuilder();
-        newString.append(originalString + "|" + stringToBeInserted);
 
-        String result = newString.toString();
-        return result;
+        return originalString + "|" + stringToBeInserted;
     }
 
     // String list of dates that in desired format in string
@@ -47,13 +44,13 @@ public class helperMethods_2 {
         List<String> tempDateList = new ArrayList<>();
         String eachMessageLine;
 
-        String dateRegex = "(\\d\\d\\d\\d)\\/([0]{0,1}[1-9]|1[012])\\/([1-9]|([012][0-9])|(3[01]))";
+        String dateRegex = "(\\d\\d\\d\\d)/([0]{0,1}[1-9]|1[012])/([1-9]|([012][0-9])|(3[01]))";
 
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd");
         String stringDate = null;
 
-        for (int i = 0; i < message.size(); i++) {
-            eachMessageLine = message.get(i);
+        for (String s : message) {
+            eachMessageLine = s;
             Matcher matcherDate = Pattern.compile(dateRegex).matcher(eachMessageLine);
 
             if (matcherDate.find()) {
@@ -73,18 +70,18 @@ public class helperMethods_2 {
         List<String> tempDateList = new ArrayList<>();
         String eachMessageLine;
 
-        String dateRegex = "(\\d\\d\\d\\d)\\/([0]{0,1}[1-9]|1[012])\\/([1-9]|([012][0-9])|(3[01])) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d$";
+        String dateRegex = "(\\d\\d\\d\\d)/([0]{0,1}[1-9]|1[012])/([1-9]|([012][0-9])|(3[01])) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d$";
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS");
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String stringDate = null;
 
-        for (int i = 0; i < message.size(); i++) {
-            eachMessageLine = message.get(i);
+        for (String s : message) {
+            eachMessageLine = s;
             Matcher matcherDate = Pattern.compile(dateRegex).matcher(eachMessageLine);
 
             if (matcherDate.find()) {
                 try {
-                    Date date = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS").parse(matcherDate.group());
+                    Date date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse(matcherDate.group());
                     stringDate = formatDate.format(date);
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -110,10 +107,8 @@ public class helperMethods_2 {
     public Set<String> getDiffDateString(List<List<String>> dateStringList) {
         Set<String> diffDateString = new LinkedHashSet<>();
 
-        for (int i = 0; i < dateStringList.size(); i++) {
-            for (String string : dateStringList.get(i)) {
-                diffDateString.add(string);
-            }
+        for (List<String> strings : dateStringList) {
+            diffDateString.addAll(strings);
         }
         return diffDateString;
     }
@@ -130,40 +125,4 @@ public class helperMethods_2 {
 
         return nameFile.toString();
     }
-
-
-//    public List<String> dateToString(List<Date> dateList) {
-//        List<String> dateToString = new ArrayList<>();
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS");
-//
-//        for (Date date : dateList) {
-//            String string = dateFormat.format(date);
-//            dateToString.add(string);
-//        }
-//        return dateToString;
-//    }
-
-
-//    public List<Date> getOriginalDateList(List<String> message) {
-//        List<Date> dateList = new ArrayList<>();
-//        String eachMessageLine;
-//
-//        String dateRegex = "(\\d\\d\\d\\d)\\/([0]{0,1}[1-9]|1[012])\\/([1-9]|([012][0-9])|(3[01])) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d$";
-//
-//        for (int i = 0; i < message.size(); i++) {
-//            eachMessageLine = message.get(i);
-//            Matcher matcher = Pattern.compile(dateRegex).matcher(eachMessageLine);
-//
-//            if (matcher.find()) {
-//                try {
-//                    Date date = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS").parse(matcher.group());
-//                    dateList.add(date);
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//        return dateList;
-//    }
-
 }

@@ -3,10 +3,7 @@ package week2.project2.collection2;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Runner_2 {
     public static void main(String[] args) {
@@ -14,13 +11,13 @@ public class Runner_2 {
         File files = new File("Resource/Project2_Collection2/input");
         List<File> fileList = new ArrayList<>();
 
-        for (File f : files.listFiles()) {
+        for (File f : Objects.requireNonNull(files.listFiles())) {
             f = new File(f.getAbsolutePath());
             fileList.add(f);
         }
 
         // create helperMethod for each input file
-        helperMethods_2[] fileArrays = new helperMethods_2[files.listFiles().length];
+        helperMethods_2[] fileArrays = new helperMethods_2[Objects.requireNonNull(files.listFiles()).length];
         int count = 0;
 
         List<String> phoneNum = new ArrayList<>();
@@ -46,8 +43,8 @@ public class Runner_2 {
 
             List<String> DateStringFinal = new ArrayList<>();
 
-            for (int j = 0; j < DateStringforContent.size(); j++) {
-                String added = fileArrays[i].insertString(DateStringforContent.get(j), phoneNumber);
+            for (String s : DateStringforContent) {
+                String added = fileArrays[i].insertString(s, phoneNumber);
                 DateStringFinal.add(added);
             }
             Collections.sort(DateStringFinal);
@@ -58,17 +55,13 @@ public class Runner_2 {
 
         // a list of all String dates in the input files
         List<String> dateStringforName = new ArrayList<>();
-        for (int i = 0; i < dateStringListforName.size(); i++) {
-            for (String date : dateStringListforName.get(i)) {
-                dateStringforName.add(date);
-            }
+        for (List<String> stringList : dateStringListforName) {
+            dateStringforName.addAll(stringList);
         }
 
         List<String> dateStringforContent = new ArrayList<>();
-        for (int i = 0; i < dateStringListFinal.size(); i++) {
-            for (String date : dateStringListFinal.get(i)) {
-                dateStringforContent.add(date);
-            }
+        for (List<String> strings : dateStringListFinal) {
+            dateStringforContent.addAll(strings);
         }
 
         //get a set of all different dates to create output files
@@ -98,8 +91,8 @@ public class Runner_2 {
             FileWriter fw;
             try {
                 fw = new FileWriter(file.getAbsolutePath());
-                for (int i = 0; i < chosenDate.size(); i++) {
-                    fw.write(chosenDate.get(i) + "|");
+                for (String s : chosenDate) {
+                    fw.write(s + "|");
                     fw.write("Ha noi cua toi" + "\n");
                 }
                 fw.flush();
