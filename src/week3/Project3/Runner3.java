@@ -8,15 +8,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Runner {
+public class Runner3 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
 
         File area = new File("Resource/Project3/input/area.txt");
         File position = new File("Resource/Project3/input/positions.txt");
 
-        Helper Area = new Helper(area.getAbsoluteFile());
-        Helper Position = new Helper(position.getAbsoluteFile());
+        Process3 Area = new Process3(area.getAbsoluteFile());
+        Process3 Position = new Process3(position.getAbsoluteFile());
 
         List<String> areaInput = Area.changeToString();
         List<String> positionInput = Position.changeToString();
@@ -96,6 +96,7 @@ public class Runner {
             }
             indexOfShip += 1;
         }
+
 
         File file = new File("Resource/Project3/output/alert.txt");
         FileWriter fw;
