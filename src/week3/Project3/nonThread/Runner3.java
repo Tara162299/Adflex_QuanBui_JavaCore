@@ -1,4 +1,4 @@
-package week3.Project3;
+package week3.Project3.nonThread;
 
 import java.io.File;
 

@@ -1,4 +1,4 @@
-package week3.Project3;
+package week3.Project3.nonThread;
 
 import java.io.*;
 import java.text.ParseException;
@@ -34,8 +34,6 @@ public class Process3 {
     }
 
     public String getDateString(String message) {
-        String eachMessageLine;
-
         String dateRegex = "(\\d\\d\\d\\d)\\/([0]{0,1}[1-9]|1[012])\\/([1-9]|([012][0-9])|(3[01])) (20|21|22|23|[0-1]?\\d):[0-5]?\\d:[0-5]?\\d$";
 
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:SS");
@@ -50,8 +48,6 @@ public class Process3 {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            //tempDateList.add(stringDate);
-
         }
         return stringDate;
     }
@@ -231,7 +227,7 @@ public class Process3 {
         return statement;
     }
 
-    public void process () {
+    public void process() {
         long startTime = System.nanoTime();
 
         File area = new File("Resource/Project3/input/area.txt");
@@ -377,7 +373,7 @@ public class Process3 {
             ioException.printStackTrace();
         }
 
-        long endTime   = System.nanoTime();
+        long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
         System.out.println("The program took " + (totalTime / Math.pow(10, 9) + " second to run"));
     }
